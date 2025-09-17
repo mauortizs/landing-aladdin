@@ -1,0 +1,711 @@
+/* ===== Fondo Skyline Agrabah ===== */
+#aladdin-skyline-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* detrás de todo */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.aladdin-skyline-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #3a26a0 0%, #2f1e80 40%, #24186d 70%, #1b1258 100%);
+  background-size: 100% 200%;
+  animation: skyBreath 28s ease-in-out infinite alternate;
+}
+
+@keyframes skyBreath {
+  0%   { background-position: 0% 0%;   filter: brightness(1) saturate(1); }
+  50%  { background-position: 0% 50%;  filter: brightness(1.03) saturate(1.02); }
+  100% { background-position: 0% 100%; filter: brightness(0.98) saturate(0.98); }
+}
+
+.aladdin-skyline {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  transform: none !important;
+  will-change: auto;
+  backface-visibility: hidden;
+  contain: layout paint;
+}
+
+/* --- General --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #2c187d;
+  font-family: 'Nunito Sans', sans-serif;
+  color: white;
+}
+
+/* --- Sección 0: Banner Hero --- */
+.hero-aladdin-mobile { display: none; }
+.hero-aladdin-desktop {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- Sección 1: Sobre el musical --- */
+.aladdin-layout {
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  padding: 3em 2em;
+  text-align: center;
+}
+.aladdin-layout h1 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 3.5em;
+  font-weight: 900;
+  color: #edcea0 !important;
+  line-height: 1em;
+  letter-spacing: -3px;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+.separador-aladdin {
+  width: 100px;
+  height: 2px;
+  background-color: #edcea0;
+  margin: 1.5em auto 2em auto;
+}
+.aladdin-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+  gap: 2rem;
+}
+.aladdin-text {
+  flex: 1 1 500px;
+  font-size: 1.6em;
+  margin-bottom: 0;
+}
+.aladdin-text p:last-child { margin-bottom: 0; }
+.advertencia {
+  margin-top: 1.5em;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+.aladdin-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.aladdin-image img { width: 400px; }
+
+/* === Botón dorado (consolidado) === */
+.boton-amarillo-aladdin,
+.boton-amarillo-aladdin-2 {
+  background-color: #edcea0;
+  color: #000;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-family: 'Open Sans', sans-serif;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+.boton-amarillo-aladdin { top: -50px; } /* solo sección 1 */
+.boton-amarillo-aladdin:hover,
+.boton-amarillo-aladdin-2:hover {
+  cursor: pointer;
+  background-color: #1d1e1d;
+  color: #f6f6f1;
+  border: 2px solid #f0d000;
+}
+.first-section-boton-aladdin { margin-top: 1em; }
+
+/* --- Responsive hero --- */
+@media screen and (max-width: 768px){
+  .hero-aladdin-desktop { display: none; }
+  .hero-aladdin-mobile {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* ===== Capas extra: Estrellas + Luna ===== */
+.aladdin-stars {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  transform: none !important;
+  will-change: auto;
+}
+.aladdin-stars .star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #fffdf5;
+  opacity: 0.95;
+  box-shadow: 0 0 8px rgba(255,255,255,0.95), 0 0 16px rgba(255,255,215,0.70);
+  filter: brightness(1.05);
+  animation: aladdinTwinkle var(--twinkle, 4s) ease-in-out infinite alternate;
+  transform: translateZ(0);
+}
+/* Estrellas por tamaño */
+.aladdin-stars .s-xs { width: 2px; height: 2px; opacity: 0.85; box-shadow: 0 0 6px rgba(255,255,255,0.75), 0 0 12px rgba(255,255,220,0.55); }
+.aladdin-stars .s-sm { width: 3px; height: 3px; box-shadow: 0 0 10px rgba(255,255,255,0.85), 0 0 18px rgba(255,255,220,0.65); }
+.aladdin-stars .s-md { width: 5px; height: 5px; box-shadow: 0 0 14px rgba(255,255,255,0.9), 0 0 24px rgba(255,255,220,0.75); }
+.aladdin-stars .s-lg { width: 7px; height: 7px; box-shadow: 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,220,0.85); }
+
+@keyframes aladdinTwinkle {
+  0%   { opacity: 0.65; transform: scale(0.95); filter: brightness(0.95); }
+  50%  { opacity: 1;    transform: scale(1.12); filter: brightness(1.30); }
+  100% { opacity: 0.8;  transform: scale(1.02); filter: brightness(1.05); }
+}
+
+/* Sparkle / Glint tipo Chicago */
+.aladdin-stars .star.sparkle {
+  animation: aladdinSparkle 550ms cubic-bezier(.22,.61,.36,1) forwards, aladdinTwinkle var(--twinkle, 4s) ease-in-out infinite alternate;
+  will-change: transform, opacity, filter;
+}
+@keyframes aladdinSparkle {
+  0%   { transform: scale(1);     filter: brightness(1.00); opacity: 1; }
+  45%  { transform: scale(1.25);  filter: brightness(1.55); opacity: 1; }
+  100% { transform: scale(1.02);  filter: brightness(1.10); opacity: 1; }
+}
+.aladdin-stars .star.sparkle::before,
+.aladdin-stars .star.sparkle::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.0;
+  filter: blur(0.4px);
+  mix-blend-mode: screen;
+  animation: aladdinRays 550ms cubic-bezier(.22,.61,.36,1) forwards;
+}
+.aladdin-stars .star.sparkle::before { width: 32px; height: 2px; border-radius: 2px; background: radial-gradient(closest-side, rgba(255,255,255,1), rgba(255,255,255,0) 80%); }
+.aladdin-stars .star.sparkle::after  { width: 2px; height: 32px; border-radius: 2px; background: radial-gradient(closest-side, rgba(255,255,255,1), rgba(255,255,255,0) 80%); }
+@keyframes aladdinRays {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+  50%  { opacity: 0.9; transform: translate(-50%, -50%) scale(1.0); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
+/* Luna */
+.aladdin-moon {
+  position: absolute;
+  top: 8vh;
+  right: 8vw;
+  width: 160px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #fffbe8 0%, #ffe9b2 38%, #ffd784 66%, #ffd07a 100%);
+  box-shadow: 0 0 8px rgba(255, 240, 200, 0.6);
+  z-index: 2;
+  filter: saturate(1.04) brightness(1.02);
+  opacity: 0.98;
+  isolation: isolate;
+  animation: moonGlow 12s ease-in-out infinite alternate;
+  will-change: filter, opacity;
+}
+.aladdin-moon::after {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 240, 200, 0.55) 0%, rgba(255, 232, 150, 0.35) 28%, rgba(255, 232, 150, 0.15) 55%, rgba(255, 232, 150, 0.0) 75%);
+  filter: blur(6px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.aladdin-moon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(120% 100% at 70% 40%, rgba(20, 10, 80, 0.15) 0%, rgba(20, 10, 80, 0.0) 50%);
+  opacity: 0.6;
+}
+@keyframes moonGlow {
+  0%   { filter: saturate(1.02) brightness(1.00); opacity: 0.95; }
+  50%  { filter: saturate(1.05) brightness(1.04); opacity: 1; }
+  100% { filter: saturate(1.03) brightness(1.02); opacity: 0.96; }
+}
+
+/* ===== Sección 2: Video Trailer ===== */
+.aladdin-trailer-section {
+  padding: 3.5em 2em 4em;
+  text-align: center;
+  color: #fff;
+}
+.aladdin-trailer-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 900;
+  font-size: 3.2em;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: #edcea0;
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 0.9em;
+}
+.aladdin-trailer-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 62%;
+  height: 4px;
+  background: #edcea0;
+  border-radius: 3px;
+}
+.aladdin-video-wrapper {
+  width: 100%;
+  max-width: 980px;
+  aspect-ratio: 16 / 9;
+  max-height: 520px;
+  margin: 0 auto 1.5em;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0,0,0,.35);
+}
+.aladdin-video-wrapper iframe { width: 100%; height: 100%; display: block; border: 0; }
+.aladdin-trailer-cta { text-align: center; }
+.aladdin-trailer-cta .boton-amarillo-aladdin { top: 0; margin-top: 1.5em; }
+
+@media (max-width: 768px) {
+  .aladdin-trailer-cta .boton-amarillo-aladdin { margin-top: 1.75em; }
+  .aladdin-trailer-title { font-size: 2.2em; letter-spacing: -1px; }
+}
+
+/* ===== Sección 3: Sobre el Taller Montaje ===== */
+.aladdin-workshop-section {
+  padding: 3em 2em;
+  color: #fff;
+  text-align: center;
+}
+.aladdin-workshop-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 3.5em;
+  font-weight: 900;
+  color: #edcea0;
+  line-height: 1em;
+  letter-spacing: -3px;
+  margin: 0 0 0.5em 0;
+}
+.aladdin-workshop-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+.workshop-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  width: min(420px, 40%);
+}
+.workshop-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+.aladdin-workshop-section .aladdin-text {
+  flex: 1 1 500px;
+  font-size: 1.6em;
+}
+@media (min-width: 769px) {
+  .aladdin-workshop-section .aladdin-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centra verticalmente el texto */
+  }
+}
+/* CTA inferior - dos botones mismo ancho */
+.workshop-cta {
+  display: flex;
+  gap: 1rem;
+  max-width: 820px;
+  margin: 2rem auto 0;
+  justify-content: center;
+}
+.workshop-cta .boton-amarillo-aladdin {
+  flex: 1 1 0;
+  width: 100%;
+  text-align: center;
+  top: 0;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .workshop-cta { flex-direction: column; max-width: 520px; }
+}
+@media (max-width: 992px) {
+  .aladdin-workshop-title { font-size: 3em; letter-spacing: -2px; }
+}
+@media (max-width: 768px) {
+  .aladdin-workshop-grid { flex-direction: column; }
+  .workshop-gallery { width: 100%; }
+  .aladdin-workshop-title { font-size: 2.3em; letter-spacing: -1px; }
+}
+
+/* ===== Títulos H2 consistentes en secciones ===== */
+.produccion-aladdin h2,
+.elenco-section h2,
+.aladdin-songs-section h2,
+.teachers-section h2,
+.staff-adicional-aladdin h2 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 3.5em;
+  font-weight: 900;
+  color: #edcea0;
+  line-height: 1em;
+  letter-spacing: -3px;
+  margin-bottom: 0em;
+  text-align: center;
+}
+
+/* ===== Sección 4: Producción Aladdin ===== */
+.produccion-aladdin {
+  color: white;
+  text-align: center;
+  padding: 3em 1em;
+  font-family: 'Quicksand', sans-serif;
+}
+.carrusel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5em;
+}
+.carrusel-aladdin {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1rem;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.carrusel-aladdin a {
+  flex: 0 0 auto;
+  width: 380px;
+  scroll-snap-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.carrusel-aladdin a:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.15);
+}
+.carrusel-aladdin img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===== Flechas de navegación (consolidado) ===== */
+.carrusel-flecha,
+.arrow {
+  background-color: #d9d9d9;
+  color: black;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5em 0.7em;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none; /* oculto por defecto */
+}
+.carrusel-flecha:hover,
+.arrow:hover { background-color: white; }
+
+/* Posiciones */
+.carrusel-flecha.izquierda,
+.left-arrow,
+.left-arrow-cast2,
+.left-arrow-teachers { left: 0.5rem; }
+.carrusel-flecha.derecha,
+.right-arrow,
+.right-arrow-cast2,
+.right-arrow-teachers { right: 0.5rem; }
+
+/* ===== Sección 5: Cast 1 ===== */
+.elenco-section  {
+  color: white;
+  text-align: center;
+  padding: 3em 2em;
+  font-family: 'Quicksand', sans-serif;
+}
+.elenco-section h3 {
+  font-family: 'Nunito Sans', sans-serif;
+  color: #edcea0;
+  line-height: 1em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+.carousel-card h4,
+.carousel-card p {
+  margin: 0.5rem 0;
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+}
+.elenco-section hr {
+  border: none;
+  height: 2px;
+  background-color: #edcea0;
+  width: 80px;
+  margin: 1em auto 1em;
+}
+.separador-elenco {
+  width: 80px;
+  margin: 0 auto 1.5rem;
+  border: 1px solid black;
+}
+
+.carousel-container { position: relative; overflow: hidden; }
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+.carousel-card {
+  flex: 0 0 calc((100% - 4.5rem) / 4); /* 4 visibles */
+  scroll-snap-align: start;
+  text-align: center;
+  border: none;
+}
+.carousel-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Flechas genéricas (usando bloque consolidado) */
+
+
+/* ===== Sección 6: Cast 2 ===== */
+
+
+/* ===== Responsivo carruseles ===== */
+@media (max-width: 767px) {
+  .carousel-card { flex: 0 0 100%; }
+  .carousel-card img {
+    width: 80%;
+    height: auto;
+    max-width: 250px;
+    margin: 0 auto;
+  }
+  .carousel-card h4,
+  .carousel-card p { font-size: 1rem; }
+
+  /* En móvil, las flechas permanecen ocultas (definido arriba)
+     y ajustamos bordes laterales a 0 para coherencia */
+  .left-arrow,
+  .left-arrow-cast2,
+  .left-arrow-teachers { left: 0; }
+  .right-arrow,
+  .right-arrow-cast2,
+  .right-arrow-teachers { right: 0; }
+}
+
+/* ===== Sección 7: Números Musicales ===== */
+.aladdin-songs-section {
+  padding: 3em 1em;
+  text-align: center;
+  color: #fff;
+  font-family: 'Quicksand', sans-serif;
+}
+.aladdin-songs-section h3 {
+  font-family: 'Nunito Sans', sans-serif;
+  color: #edcea0;
+  line-height: 1em;
+  text-align: center;
+  margin: 2em 0 1em;
+  font-weight: bold;
+  font-size: 2em;
+}
+.aladdin-songs-section p {
+  margin: 0.4em 0;
+  font-size: 1.6em;
+}
+.songs-cta { margin-top: 1.5em; }
+.songs-cta .boton-amarillo-aladdin { top: 0; }
+
+@media (max-width: 768px) {
+  .aladdin-songs-section { padding: 2em 1em; }
+  .aladdin-songs-section p { font-size: 1.2em; }
+}
+
+/* ===== Sección 8: Equipo Creativo ===== */
+.teachers-section {
+  text-align: center;
+  padding: 3em 1em;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+.carousel-container.carousel-teachers { position: relative; overflow: hidden; }
+.carousel-track-teachers {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 1rem;
+}
+.carousel-track-teachers::-webkit-scrollbar { display: none; }
+.carousel-card-teachers {
+  flex: 0 0 25%; /* 4 visibles */
+  scroll-snap-align: start;
+  text-align: center;
+}
+.carousel-card-teachers img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.carousel-card-teachers h3,
+.carousel-card-teachers p {
+  margin: 0.5rem 0;
+  font-family: 'Quicksand', sans-serif;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .carousel-card-teachers { flex: 0 0 100%; }
+}
+
+/* ===== Sección 9: Staff adicional ===== */
+.staff-adicional-aladdin {
+  text-align: center;
+  padding: 2em 1em;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+.staff-adicional-aladdin h3 {
+  font-family: 'Nunito Sans', sans-serif;
+  color: white !important;
+  line-height: 1em;
+  text-align: center;
+  margin: 2em 0 0.5em;
+  font-weight: bold;
+  font-size: 2em;
+}
+.staff-adicional-aladdin p {
+  margin: 0.4em 0;
+  font-size: 1.6em;
+}
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2em;
+  margin: 2em auto;
+  max-width: 900px;
+}
+.separador-blanco-staff {
+  width: 50px;
+  height: 1px;
+  background-color: white;
+  margin: 0 auto 0;
+}
+@media (max-width: 768px) {
+  .staff-grid { grid-template-columns: 1fr; } /* una columna en móvil */
+  .staff-adicional-aladdin p { font-size: 1.2em; margin-bottom: 0; }
+}
+
+/* ===== Sección 10: Créditos Aladdin ===== */
+.aladdin-credits-section{
+  padding:3em 1.5em 4em;
+  color:#fff;
+  text-align:center;
+  font-family:'Quicksand',sans-serif;
+  max-width:900px;
+  margin:0 auto;
+}
+.credits-title{
+  font-family:'Nunito Sans',sans-serif;
+  font-size:2.2em;
+  font-weight:900;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  color:white;
+  margin:0 0 .2em 0;
+}
+.aladdin-credits-section .separador-aladdin{
+  width:120px;
+  height:3px;
+  margin:.8em auto 2em;
+}
+/* Pares rol / nombre */
+.credits-list{
+  display:grid;
+  gap:1.1em;
+  margin:1.2em auto 0;
+  max-width:680px;
+  padding:0;
+}
+.credit-pair{ display:grid; gap:.25em; }
+.credits-list dt{
+  font-family:'Nunito Sans',sans-serif;
+  font-size:1.2em;
+  letter-spacing:.3px;
+  color:white;
+  font-weight:800;
+}
+.credits-list dd{ margin:0; font-size:1.5em; }
+/* Notas legales */
+.credits-smallprint,.credits-note{
+  max-width:760px;
+  margin:1.2em auto 0;
+  font-size:1.2em;
+  line-height:1.6;
+}
+/* Ilustración */
+.credits-illustration{ margin:1.6em auto .8em; }
+.credits-illustration img{
+  width:440px;
+  height:auto;
+  display:block;
+  margin:.2em auto;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));
+}
+/* CTA */
+.credits-cta{ margin-top:1.6em; }
+.credits-cta .boton-amarillo-aladdin{ top:0; } /* evita el -50px de sección 1 */
+
+/* Accesibilidad / Motion */
+@media (prefers-reduced-motion: reduce) {
+  .aladdin-stars .star, .aladdin-moon { animation: none !important; }
+}
