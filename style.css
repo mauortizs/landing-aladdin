@@ -245,6 +245,13 @@ body {
   100% { filter: saturate(1.03) brightness(1.02); opacity: 0.96; }
 }
 
+/* Ocultar luna en móviles */
+@media (max-width: 768px) {
+  .aladdin-moon {
+    display: none !important;
+  }
+}
+
 /* ===== Sección 2: Video Trailer ===== */
 .aladdin-trailer-section {
   padding: 3.5em 2em 4em;
